@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -11,7 +11,8 @@ package discountstrategy;
  */
 public class LineItem {
     private int prodQty;
-    private Product product;        
+    private Product product; 
+    
 
     public LineItem(int prodQty, Product product) {
         this.prodQty = prodQty;
@@ -35,8 +36,15 @@ public class LineItem {
     public double getUnitPrice(){
         return product.getUnitPrice();
     }
-
-    
+    public double getDiscountTotal(){
+    return product.getDiscountProductTotal(prodQty);
+    }
+    public double getSubTotal(){
+        return product.getUnitPrice() * prodQty;
+    }
+    public double getAmountSaved(){
+        return product.getAmountSaved(prodQty);
+    }
     
      //-----------------------------------------------------------------------------------
     public void setProdQty(int prodQty) {
@@ -51,7 +59,7 @@ public class LineItem {
     public static void main(String[] args) {
         LineItem item1 = new LineItem(2,new Product("A100","Hat",20.00,new PercentOffDiscount(.10)));
         
-        System.out.println(item1.getProductId() + " " + item1.getName()  + " " +  item1.getProdQty() + " " + item1.getUnitPrice() + " " );
+        System.out.println(item1.getProductId() + " " + item1.getName()  + " " +  item1.getProdQty() + " " + item1.getUnitPrice() + " " + item1.getSubTotal()  + " " +  item1.getDiscountTotal() + " " + item1.getAmountSaved());
     }
     
     
