@@ -34,6 +34,9 @@ public class PercentOffDiscount implements DiscountStrategy {
 
     @Override
     public void setDiscountRate(double discountRate) {
+        if (discountRate == 0){
+            throw new ArithmeticException("need to put a rate in. can't be 0");
+        }
         this.discountRate = discountRate;
     }
     
